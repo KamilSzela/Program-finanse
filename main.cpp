@@ -5,6 +5,9 @@ using namespace std;
 
 int main()
 {
-    FinanceProgram program;
+    FinanceProgram program(1);
+
+    if(program.checkIfUserIsLogged() == false) program.displayMainMenu();
+    else program.displayUserMenu();
     return 0;
 }

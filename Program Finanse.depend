@@ -1,9 +1,12 @@
 # depslib dependency file v1.0
-1563297837 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\main.cpp
+1563298761 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\main.cpp
 	<iostream>
 	"FinanceProgram.h"
 
-1563297866 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.h
+1563298652 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.h
 	<iostream>
 	<windows.h>
+
+1563298746 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.cpp
+	"FinanceProgram.h"
 
