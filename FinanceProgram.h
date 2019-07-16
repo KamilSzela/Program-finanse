@@ -5,7 +5,10 @@ using namespace std;
 
 class FinanceProgram
 {
-    void displayMainMenu();
+    int userId;
 public:
-    FinanceProgram();
+    void displayMainMenu();
+    void displayUserMenu();
+    bool checkIfUserIsLogged();
+    FinanceProgram(int id = 0);
 };
