@@ -29,10 +29,15 @@ void FinanceProgram::displayUserMenu()
 }
 bool FinanceProgram::checkIfUserIsLogged()
 {
-    if (userId == 0) return false;
-    else return true;
+    bool check = userManager.checkIfUserisLogged();
+    return check;
 }
-FinanceProgram::FinanceProgram(int id)
+
+void FinanceProgram::registerNewUser()
 {
-    userId = id;
+    userManager.registerNewUser();
+}
+void FinanceProgram::showAllUsers()
+{
+    userManager.showAllUsers();
 }
