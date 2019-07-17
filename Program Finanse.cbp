@@ -32,8 +32,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="FileWithSavedUsers.cpp" />
+		<Unit filename="FileWithSavedUsers.h" />
 		<Unit filename="FinanceProgram.cpp" />
 		<Unit filename="FinanceProgram.h" />
+		<Unit filename="User.cpp" />
+		<Unit filename="User.h" />
+		<Unit filename="UserManager.cpp" />
+		<Unit filename="UserManager.h" />
+		<Unit filename="XMLFile.cpp" />
+		<Unit filename="XMLFile.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

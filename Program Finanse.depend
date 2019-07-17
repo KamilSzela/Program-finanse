@@ -1,12 +1,32 @@
 # depslib dependency file v1.0
-1563298761 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\main.cpp
+1563386546 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\main.cpp
 	<iostream>
 	"FinanceProgram.h"
 
-1563298652 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.h
+1563386546 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.h
 	<iostream>
 	<windows.h>
+	"UserManager.h"
 
-1563298746 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.cpp
+1563386546 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.cpp
 	"FinanceProgram.h"
+
+1563383351 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedusers.cpp
+
+1563384744 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\user.cpp
+	"User.h"
+
+1563384740 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\user.h
+	<iostream>
+
+1563383324 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\xmlfile.cpp
+
+1563386609 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.cpp
+	"UserManager.h"
+
+1563386628 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.h
+	<iostream>
+	<vector>
+	<windows.h>
+	"User.h"
 

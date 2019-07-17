@@ -1,14 +1,17 @@
 #include <iostream>
 #include <windows.h>
+#include "UserManager.h"
 
 using namespace std;
 
 class FinanceProgram
 {
-    int userId;
+    UserManager userManager;
 public:
     void displayMainMenu();
     void displayUserMenu();
     bool checkIfUserIsLogged();
-    FinanceProgram(int id = 0);
+    //FinanceProgram();
+    void registerNewUser();
+    void showAllUsers();
 };
