@@ -1,7 +1,8 @@
 #include "FinanceProgram.h"
 
-void FinanceProgram::displayMainMenu()
+char FinanceProgram::displayMainMenu()
 {
+    char choice;
     system("cls");
     cout << "    >>> MENU  GLOWNE <<<" << endl;
     cout << "---------------------------" << endl;
@@ -10,10 +11,13 @@ void FinanceProgram::displayMainMenu()
     cout << "9. Koniec programu" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
+    cin >> choice;
+    return choice;
 }
-void FinanceProgram::displayUserMenu()
+char FinanceProgram::displayUserMenu()
 {
-        system("cls");
+    system("cls");
+    char choice;
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Dodaj przychod" << endl;
@@ -26,13 +30,22 @@ void FinanceProgram::displayUserMenu()
     cout << "7. Wyloguj sie" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
+    cin >> choice;
+    return choice;
 }
 bool FinanceProgram::checkIfUserIsLogged()
 {
     bool check = userManager.checkIfUserisLogged();
     return check;
 }
-
+void FinanceProgram::logUserIn()
+{
+    userManager.logUserIn();
+}
+void FinanceProgram::logUserOut()
+{
+    userManager.logUserOut();
+}
 void FinanceProgram::registerNewUser()
 {
     userManager.registerNewUser();
