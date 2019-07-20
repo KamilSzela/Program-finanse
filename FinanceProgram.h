@@ -1,3 +1,5 @@
+#ifndef FINANCEPROGRAM_H
+#define FINANCEPROGRAM_H
 #include <iostream>
 #include <windows.h>
 #include "UserManager.h"
@@ -8,10 +10,13 @@ class FinanceProgram
 {
     UserManager userManager;
 public:
-    void displayMainMenu();
-    void displayUserMenu();
+    char displayMainMenu();
+    char displayUserMenu();
     bool checkIfUserIsLogged();
     //FinanceProgram();
     void registerNewUser();
+    void logUserIn();
+    void logUserOut();
     void showAllUsers();
 };
+#endif
