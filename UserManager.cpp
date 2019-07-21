@@ -48,6 +48,7 @@ void UserManager::registerNewUser()
     User newUser;
     newUser = loadNewUserData();
     users.push_back(newUser);
+    fileWithSavedUsers.addNewUserToAFile(newUser);
     cout << endl << "Konto zalozone pomyslnie" << endl << endl;
     Sleep(1500);
 }

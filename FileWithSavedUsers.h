@@ -3,6 +3,7 @@
 #include <iostream>
 #include "User.h"
 #include <vector>
+#include <windows.h>
 #include "XMLFile.h"
 class FileWithSavedUsers : public XmlFile
 {
@@ -10,5 +11,6 @@ class FileWithSavedUsers : public XmlFile
   public:
       vector <User> loadUsersFromAFile();
       FileWithSavedUsers(string fileWithUsers): XmlFile(fileWithUsers){};
+      void addNewUserToAFile(User newUser);
 };
 #endif

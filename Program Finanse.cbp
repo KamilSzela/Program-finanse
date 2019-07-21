@@ -36,6 +36,8 @@
 		<Unit filename="FileWithSavedUsers.h" />
 		<Unit filename="FinanceProgram.cpp" />
 		<Unit filename="FinanceProgram.h" />
+		<Unit filename="Markup.cpp" />
+		<Unit filename="Markup.h" />
 		<Unit filename="User.cpp" />
 		<Unit filename="User.h" />
 		<Unit filename="UserManager.cpp" />
