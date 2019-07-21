@@ -1,6 +1,6 @@
 #include "FileWithSavedUsers.h"
 
-/*vector <User> FileWithSavedUsers::loadUsersFromAFile()
+vector <User> FileWithSavedUsers::loadUsersFromAFile()
 {
  CMarkup xml;
  vector <User> users;
@@ -8,6 +8,7 @@
  if (fileExists == false)
  {
      cout << "Brak zapisanych uzytkownikiow";
+     Sleep(1000);
      return users;
  }
  xml.FindElem();
@@ -35,4 +36,24 @@
      users.push_back(newUser);
  }
  return users;
-}*/
+}
+void FileWithSavedUsers::addNewUserToAFile(User newUser)
+{
+    CMarkup xmlFile;
+    bool fileExists = xmlFile.Load(getFileName());
+    if(!fileExists)
+    {
+        xmlFile.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xmlFile.AddElem("USERS");
+    }
+    xmlFile.FindElem();
+    xmlFile.IntoElem();
+    xmlFile.AddElem("USER");
+    xmlFile.IntoElem();
+    xmlFile.AddElem("USER_ID", newUser.getUserId());
+    xmlFile.AddElem("LOGIN", newUser.getUserLogin());
+    xmlFile.AddElem("PASSWORD", newUser.getUserPassword());
+    xmlFile.AddElem("NAME", newUser.getUserName());
+    xmlFile.AddElem("SURNAME", newUser.getUserSurname());
+    xmlFile.Save("Users.xml");
+}
