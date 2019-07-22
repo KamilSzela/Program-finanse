@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1563709590 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\main.cpp
+1563812100 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\main.cpp
 	<iostream>
 	"FinanceProgram.h"
 
-1563709590 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.h
+1563812100 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.h
 	<iostream>
 	<windows.h>
 	"UserManager.h"
 
-1563709590 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.cpp
+1563812100 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.cpp
 	"FinanceProgram.h"
 
 1563704055 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedusers.cpp
@@ -23,10 +23,10 @@
 1563646948 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\xmlfile.cpp
 	"XMLFile.h"
 
-1563811028 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.cpp
+1563816943 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.cpp
 	"UserManager.h"
 
-1563810559 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.h
+1563814626 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.h
 	<iostream>
 	<sstream>
 	<vector>
@@ -36,6 +36,8 @@
 	"Income.h"
 	"XMLFile.h"
 	"FileWithSavedUsers.h"
+	"FileWithSavedExpences.h"
+	"FileWithSavedIncomes.h"
 
 1563646948 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\xmlfile.h
 	<iostream>
@@ -47,7 +49,7 @@
 	<string>
 	<afx.h>
 
-1563708324 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedusers.h
+1563812100 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedusers.h
 	<iostream>
 	"User.h"
 	<vector>
@@ -62,17 +64,40 @@
 	<windows.h>
 	<mbstring.h>
 
-1563719311 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\money.cpp
+1563812100 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\money.cpp
 	"Money.h"
 
-1563719745 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\money.h
+1563812100 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\money.h
 	<iostream>
 
-1563707552 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\expence.cpp
+1563812100 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\expence.cpp
 
-1563707602 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\income.cpp
+1563812100 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\income.cpp
 
-1563708588 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\income.h
+1563812100 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\income.h
 	<iostream>
 	"Money.h"
+
+1563813990 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedexpences.cpp
+
+1563814342 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedexpences.h
+	<iostream>
+	"Expence.h"
+	<vector>
+	<windows.h>
+	"XMLFile.h"
+
+1563812100 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\expence.h
+	"Money.h"
+	<iostream>
+
+1563817198 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedincomes.h
+	<iostream>
+	"Income.h"
+	<vector>
+	<windows.h>
+	"XMLFile.h"
+
+1563815194 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedincomes.cpp
+	"FileWithSavedIncomes.h"
 

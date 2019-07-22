@@ -34,6 +34,10 @@
 		</Compiler>
 		<Unit filename="Expence.cpp" />
 		<Unit filename="Expence.h" />
+		<Unit filename="FileWithSavedExpences.cpp" />
+		<Unit filename="FileWithSavedExpences.h" />
+		<Unit filename="FileWithSavedIncomes.cpp" />
+		<Unit filename="FileWithSavedIncomes.h" />
 		<Unit filename="FileWithSavedUsers.cpp" />
 		<Unit filename="FileWithSavedUsers.h" />
 		<Unit filename="FinanceProgram.cpp" />
