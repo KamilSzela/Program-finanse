@@ -54,3 +54,11 @@ void FinanceProgram::showAllUsers()
 {
     userManager.showAllUsers();
 }
+void FinanceProgram::addNewIncome()
+{
+    userManager.addNewIncome();
+}
+void FinanceProgram::displayAllIncomes()
+{
+    userManager.displayAllIncomes();
+}

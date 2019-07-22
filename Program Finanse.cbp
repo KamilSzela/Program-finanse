@@ -32,12 +32,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Expence.cpp" />
+		<Unit filename="Expence.h" />
 		<Unit filename="FileWithSavedUsers.cpp" />
 		<Unit filename="FileWithSavedUsers.h" />
 		<Unit filename="FinanceProgram.cpp" />
 		<Unit filename="FinanceProgram.h" />
+		<Unit filename="Income.cpp" />
+		<Unit filename="Income.h" />
 		<Unit filename="Markup.cpp" />
 		<Unit filename="Markup.h" />
+		<Unit filename="Money.cpp" />
+		<Unit filename="Money.h" />
 		<Unit filename="User.cpp" />
 		<Unit filename="User.h" />
 		<Unit filename="UserManager.cpp" />

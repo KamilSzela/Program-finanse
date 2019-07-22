@@ -101,4 +101,153 @@ void UserManager::logUserOut()
 {
     loggedUserId = 0;
     cout << endl << "Wylogowales sie. ";
+    Sleep(1000);
+}
+int UserManager::checkMaxNumberOfDaysInAMonth(int year, int month)
+{
+      switch (month)
+    {
+case (1):
+case(3):
+case(5):
+case(7):
+case(8):
+case(10):
+case(12):
+    return 31;
+    break;
+case(4):
+case(6):
+case(9):
+case(11):
+    return 30;
+    break;
+case(2):
+    if ((year%4==0&&year%100!=0)||(year%400==0))
+       {
+           return 29;
+       }
+    else
+       {
+           return 28;
+       }
+}
+}
+int UserManager::convertStringToInt(string liczba)
+{
+    int liczbaInt;
+    istringstream iss(liczba);
+    iss >> liczbaInt;
+
+    return liczbaInt;
+}
+int UserManager::convertStringDateToIntDate(string date)
+{
+    string temporaryString = "";
+     for(int i = 0; i < date.length(); i++)
+     {
+         if(isdigit(date[i]))
+            {
+              temporaryString+=date[i];
+            }
+     }
+     int number = convertStringToInt(temporaryString);
+     return number;
+}
+bool UserManager::checkIfDateIsCorrect( string &date )
+{
+    string year, month, day;
+    string temporary;
+    int instance = 0;
+    for(int i = 0; i < date.length(); i++)
+    {
+
+        if(date[i]=='-')
+            {
+                i++ ;
+                instance++;
+
+                if(instance == 1)
+                {
+                    year = temporary;
+                    temporary = "";
+                    if(convertStringToInt(year) < 2000)
+                        {
+                            cout<< "Niepoprawny rok";
+                            return false;
+                        }
+                }
+                if(instance == 2)
+                {
+                    if (temporary.length() == 1) {month = '0'+ temporary;}
+                    else {month = temporary;}
+                    temporary = "";
+                    if(convertStringToInt(month) < 0 || convertStringToInt(month) > 12)
+                    {
+                        cout<<"Niepoprawny miesiac";
+                        return false;
+                    }
+                }
+
+            }
+
+            temporary += date[i];
+
+              if(i == date.length()-1)
+                {
+                     if (temporary.length() == 1) {day = '0'+ temporary;}
+                    else {day = temporary;}
+                    int maxNumberDays = checkMaxNumberOfDaysInAMonth(convertStringToInt(year), convertStringToInt(month));
+                    if(convertStringToInt(day)>maxNumberDays || convertStringToInt(day)<0)
+                    {
+                        cout<<"Niepoprawna liczba dni";
+                        return false;
+                    }
+
+                }
+
+    }
+    date = year + month + day;
+    return true;
+}
+
+void UserManager::addNewIncome()
+{
+    Income newIncome;
+    int newIncomeId, newAmount, dateAfterConversion, newdateAfterConversion;
+    if (incomes.empty() == true) newIncomeId = 1;
+    else newIncomeId = incomes.back().getMoneyId()+1;
+
+    string newDate, newItem;
+    cout << "Dodawanie nowego przychodu pieniedzy" << endl;
+    cout << "---------------------------------" << endl;
+    do{
+        cout << endl << "Podaj date otrzymania przychodu(format rr-mm-dd): ";
+       cin >> newDate;
+    }while(checkIfDateIsCorrect(newDate)==false);
+
+    newdateAfterConversion = convertStringDateToIntDate(newDate);
+    cout << "Podaj zrodlo otrzymania przychodu: ";
+    cin >> newItem;
+    cout << "Podaj ilosc otrzymanego przychodu: ";
+    cin >> newAmount;
+    newIncome.setMoneyId( newIncomeId );
+    newIncome.setUserId( loggedUserId );
+    newIncome.setDate( newdateAfterConversion );
+    newIncome.setItem( newItem );
+    newIncome.setAmount( newAmount );
+    incomes.push_back(newIncome);
+
+}
+void UserManager::displayAllIncomes()
+{
+      for (int i=0; i < incomes.size(); i++)
+   {
+       cout<<"Id uzytkownika: " << incomes[i].getUserId()<<endl;
+       cout<<"Id przychodu: " << incomes[i].getMoneyId()<<endl;
+       cout<<"Data przychodu: " << incomes[i].getDate()<<endl;
+       cout<<"Zrodlo przychodu: " << incomes[i].getItem()<<endl;
+       cout<<"wartosc przychodu: " << incomes[i].getAmount()<<endl;
+   }
+   system("pause");
 }
