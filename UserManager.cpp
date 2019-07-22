@@ -81,6 +81,7 @@ void UserManager::logUserIn()
                 {
                     cout << "Zalogowales sie.";
                     loggedUserId = i -> getUserId();
+                    incomes = fileWithSavedIncomes.loadIncomesFromAFile(loggedUserId);
                     return;
                 }
                 else {
@@ -100,6 +101,8 @@ void UserManager::logUserIn()
 void UserManager::logUserOut()
 {
     loggedUserId = 0;
+    incomes.clear();
+
     cout << endl << "Wylogowales sie. ";
     Sleep(1000);
 }
@@ -161,7 +164,6 @@ bool UserManager::checkIfDateIsCorrect( string &date )
     int instance = 0;
     for(int i = 0; i < date.length(); i++)
     {
-
         if(date[i]=='-')
             {
                 i++ ;
@@ -188,7 +190,6 @@ bool UserManager::checkIfDateIsCorrect( string &date )
                         return false;
                     }
                 }
-
             }
 
             temporary += date[i];
@@ -203,9 +204,7 @@ bool UserManager::checkIfDateIsCorrect( string &date )
                         cout<<"Niepoprawna liczba dni";
                         return false;
                     }
-
                 }
-
     }
     date = year + month + day;
     return true;
@@ -214,7 +213,7 @@ bool UserManager::checkIfDateIsCorrect( string &date )
 void UserManager::addNewIncome()
 {
     Income newIncome;
-    int newIncomeId, newAmount, dateAfterConversion, newdateAfterConversion;
+    int newIncomeId, newAmount, newdateAfterConversion;
     if (incomes.empty() == true) newIncomeId = 1;
     else newIncomeId = incomes.back().getMoneyId()+1;
 
@@ -237,6 +236,7 @@ void UserManager::addNewIncome()
     newIncome.setItem( newItem );
     newIncome.setAmount( newAmount );
     incomes.push_back(newIncome);
+    fileWithSavedIncomes.addNewIncomeToAFile(newIncome);
 
 }
 void UserManager::displayAllIncomes()

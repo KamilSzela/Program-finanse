@@ -9,6 +9,8 @@
 #include "Income.h"
 #include "XMLFile.h"
 #include "FileWithSavedUsers.h"
+#include "FileWithSavedExpences.h"
+#include "FileWithSavedIncomes.h"
 
 using namespace std;
 
@@ -18,6 +20,8 @@ class UserManager
     vector <User> users;
     vector <Income> incomes;
     FileWithSavedUsers fileWithSavedUsers;
+    FileWithSavedExpences fileWithSavedExpences;
+    FileWithSavedIncomes fileWithSavedIncomes;
 
     int returnLastUserId();
     User loadNewUserData();
@@ -27,7 +31,7 @@ class UserManager
     int convertStringDateToIntDate(string date);
     int convertStringToInt(string liczba);
 public:
-    UserManager(): fileWithSavedUsers("Users.xml"){
+    UserManager(): fileWithSavedUsers("Users.xml"), fileWithSavedExpences("Expences.xml"), fileWithSavedIncomes("Incomes.xml"){
      loggedUserId = 0;
      users = fileWithSavedUsers.loadUsersFromAFile();
     };
