@@ -27,8 +27,9 @@ int main()
 
                   switch(choiceUserMenu)
                   {
-                      case '1': break;
+                      case '1': program.addNewIncome(); break;
                       case '7': program.logUserOut(); break;
+                      case '8': program.displayAllIncomes(); break;
                       default: cout << "Niepoprawna opcja, sprobuj ponownie!"; Sleep(1200);
                   }
               }

@@ -5,9 +5,9 @@
 #include <vector>
 #include <windows.h>
 #include "XMLFile.h"
+
 class FileWithSavedUsers : public XmlFile
 {
-    bool checkIfFileIsEmpty();
   public:
       vector <User> loadUsersFromAFile();
       FileWithSavedUsers(string fileWithUsers): XmlFile(fileWithUsers){};
