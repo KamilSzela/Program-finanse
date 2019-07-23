@@ -82,6 +82,7 @@ void UserManager::logUserIn()
                     cout << "Zalogowales sie.";
                     loggedUserId = i -> getUserId();
                     incomes = fileWithSavedIncomes.loadIncomesFromAFile(loggedUserId);
+                    expences = fileWithSavedExpences.loadExpencesFromAFile(loggedUserId);
                     return;
                 }
                 else {
@@ -164,7 +165,7 @@ bool UserManager::checkIfDateIsCorrect( string &date )
     int instance = 0;
     for(int i = 0; i < date.length(); i++)
     {
-        if(date[i]=='-')
+        if(date[i]=='-'||date[i]==','||date[i]=='.')
             {
                 i++ ;
                 instance++;
@@ -205,6 +206,7 @@ bool UserManager::checkIfDateIsCorrect( string &date )
                         return false;
                     }
                 }
+                cout << temporary << endl;
     }
     date = year + month + day;
     return true;
@@ -214,8 +216,8 @@ void UserManager::addNewIncome()
 {
     Income newIncome;
     int newIncomeId, newAmount, newdateAfterConversion;
-    if (incomes.empty() == true) newIncomeId = 1;
-    else newIncomeId = incomes.back().getMoneyId()+1;
+
+    newIncomeId = fileWithSavedIncomes.getLastIncomeId()+1;
 
     string newDate, newItem;
     cout << "Dodawanie nowego przychodu pieniedzy" << endl;
@@ -227,7 +229,8 @@ void UserManager::addNewIncome()
 
     newdateAfterConversion = convertStringDateToIntDate(newDate);
     cout << "Podaj zrodlo otrzymania przychodu: ";
-    cin >> newItem;
+    cin.sync();
+    getline(cin,newItem);
     cout << "Podaj ilosc otrzymanego przychodu: ";
     cin >> newAmount;
     newIncome.setMoneyId( newIncomeId );
@@ -239,6 +242,36 @@ void UserManager::addNewIncome()
     fileWithSavedIncomes.addNewIncomeToAFile(newIncome);
 
 }
+void UserManager::addNewExpence()
+{
+    Expence newExpence;
+    int newExpenceId, newAmount, newdateAfterConversion;
+
+    newExpenceId = fileWithSavedExpences.getLastExpenceId()+1;
+
+    string newDate, newItem;
+    cout << "Dodawanie nowego wydatku" << endl;
+    cout << "---------------------------------" << endl;
+    do{
+        cout << endl << "Podaj date otrzymania przychodu(format rr-mm-dd): ";
+       cin >> newDate;
+    }while(checkIfDateIsCorrect(newDate)==false);
+
+    newdateAfterConversion = convertStringDateToIntDate(newDate);
+    cout << "Podaj zrodlo wydatku: ";
+    cin.sync();
+    getline(cin,newItem);
+    cout << "Podaj rozmiar wydatku: ";
+    cin >> newAmount;
+    newExpence.setMoneyId( newExpenceId );
+    newExpence.setUserId( loggedUserId );
+    newExpence.setDate( newdateAfterConversion );
+    newExpence.setItem( newItem );
+    newExpence.setAmount( newAmount );
+    expences.push_back(newExpence);
+    fileWithSavedExpences.addNewExpenceToAFile(newExpence);
+
+}
 void UserManager::displayAllIncomes()
 {
       for (int i=0; i < incomes.size(); i++)
@@ -248,6 +281,18 @@ void UserManager::displayAllIncomes()
        cout<<"Data przychodu: " << incomes[i].getDate()<<endl;
        cout<<"Zrodlo przychodu: " << incomes[i].getItem()<<endl;
        cout<<"wartosc przychodu: " << incomes[i].getAmount()<<endl;
+   }
+   system("pause");
+}
+void UserManager::displayAllExpences()
+{
+      for (int i=0; i < expences.size(); i++)
+   {
+       cout<<"Id uzytkownika: " << expences[i].getUserId()<<endl;
+       cout<<"Id wydatku: " << expences[i].getMoneyId()<<endl;
+       cout<<"Data wydatku: " << expences[i].getDate()<<endl;
+       cout<<"Zrodlo wydatku: " << expences[i].getItem()<<endl;
+       cout<<"wartosc wydatku: " << expences[i].getAmount()<<endl;
    }
    system("pause");
 }

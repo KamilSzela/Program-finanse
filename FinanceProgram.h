@@ -19,6 +19,8 @@ public:
     void logUserOut();
     void showAllUsers();
     void addNewIncome();
+    void addNewExpence();
     void displayAllIncomes();
+    void displayAllExpences();
 };
 #endif
