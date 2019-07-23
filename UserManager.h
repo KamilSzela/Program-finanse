@@ -19,6 +19,7 @@ class UserManager
     int loggedUserId;
     vector <User> users;
     vector <Income> incomes;
+    vector <Expence> expences;
     FileWithSavedUsers fileWithSavedUsers;
     FileWithSavedExpences fileWithSavedExpences;
     FileWithSavedIncomes fileWithSavedIncomes;
@@ -42,6 +43,8 @@ public:
     bool checkIfUserisLogged();
     void showAllUsers();
     void addNewIncome();
+    void addNewExpence();
     void displayAllIncomes();
+    void displayAllExpences();
 };
 #endif

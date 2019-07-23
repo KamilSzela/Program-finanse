@@ -10,8 +10,9 @@ class FileWithSavedIncomes : public XmlFile
 {
     int lastIncomeId;
   public:
-      FileWithSavedIncomes(string fileWithIncomes): XmlFile(fileWithIncomes){ lastIncomeId = 1;};
+      FileWithSavedIncomes(string fileWithIncomes): XmlFile(fileWithIncomes){ lastIncomeId = 0;};
       void addNewIncomeToAFile(Income newIncome);
       vector <Income> loadIncomesFromAFile(int loggedUserId);
+      int getLastIncomeId();
 };
 #endif

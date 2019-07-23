@@ -1,9 +1,14 @@
 #include "FileWithSavedIncomes.h"
 
+int FileWithSavedIncomes::getLastIncomeId()
+{
+    return lastIncomeId;
+}
 void FileWithSavedIncomes::addNewIncomeToAFile(Income newIncome)
 {
     CMarkup xmlFile;
     bool fileExists = xmlFile.Load(getFileName());
+    lastIncomeId++;
     if(!fileExists)
     {
         xmlFile.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
@@ -19,7 +24,7 @@ void FileWithSavedIncomes::addNewIncomeToAFile(Income newIncome)
     xmlFile.AddElem("ITEM", newIncome.getItem());
     xmlFile.AddElem("AMOUNT", newIncome.getAmount());
     xmlFile.Save("Incomes.xml");
-    lastIncomeId++;
+
 }
 vector <Income> FileWithSavedIncomes::loadIncomesFromAFile(int loggedUserId)
 {

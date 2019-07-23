@@ -58,7 +58,15 @@ void FinanceProgram::addNewIncome()
 {
     userManager.addNewIncome();
 }
+void FinanceProgram::addNewExpence()
+{
+    userManager.addNewExpence();
+}
 void FinanceProgram::displayAllIncomes()
 {
     userManager.displayAllIncomes();
+}
+void FinanceProgram::displayAllExpences()
+{
+    userManager.displayAllExpences();
 }

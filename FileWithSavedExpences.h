@@ -8,7 +8,11 @@
 
 class FileWithSavedExpences : public XmlFile
 {
+    int lastExpenceId;
   public:
-      FileWithSavedExpences(string fileWithExpences): XmlFile(fileWithExpences){};
+      FileWithSavedExpences(string fileWithExpences): XmlFile(fileWithExpences){lastExpenceId = 0;};
+      void addNewExpenceToAFile(Expence newExpence);
+      vector <Expence> loadExpencesFromAFile(int loggedUserId);
+      int getLastExpenceId();
 };
 #endif
