@@ -137,13 +137,13 @@ case(2):
        }
 }
 }
-int UserManager::convertStringToInt(string liczba)
+int UserManager::convertStringToInt(string number)
 {
-    int liczbaInt;
-    istringstream iss(liczba);
-    iss >> liczbaInt;
+    int intNumber;
+    istringstream iss(number);
+    iss >> intNumber;
 
-    return liczbaInt;
+    return intNumber;
 }
 int UserManager::convertStringDateToIntDate(string date)
 {
@@ -253,7 +253,7 @@ void UserManager::addNewExpence()
     cout << "Dodawanie nowego wydatku" << endl;
     cout << "---------------------------------" << endl;
     do{
-        cout << endl << "Podaj date otrzymania przychodu(format rr-mm-dd): ";
+        cout << endl << "Podaj date wydatku(format rr-mm-dd): ";
        cin >> newDate;
     }while(checkIfDateIsCorrect(newDate)==false);
 
@@ -272,13 +272,30 @@ void UserManager::addNewExpence()
     fileWithSavedExpences.addNewExpenceToAFile(newExpence);
 
 }
+string UserManager::changeIntDateToDateWithDashes(int intDate)
+{
+    ostringstream ss;
+    ss << intDate;
+    string str = ss.str();
+    string stringDate;
+    for (int i=0; i<str.length(); i++)
+    {
+        stringDate += str[i];
+        if(i==3||i==5)
+        {
+            stringDate += '-';
+        }
+    }
+    return stringDate;
+}
 void UserManager::displayAllIncomes()
 {
       for (int i=0; i < incomes.size(); i++)
    {
        cout<<"Id uzytkownika: " << incomes[i].getUserId()<<endl;
        cout<<"Id przychodu: " << incomes[i].getMoneyId()<<endl;
-       cout<<"Data przychodu: " << incomes[i].getDate()<<endl;
+       string date = changeIntDateToDateWithDashes(incomes[i].getDate());
+       cout<<"Data przychodu: " << date <<endl;
        cout<<"Zrodlo przychodu: " << incomes[i].getItem()<<endl;
        cout<<"wartosc przychodu: " << incomes[i].getAmount()<<endl;
    }
@@ -290,6 +307,7 @@ void UserManager::displayAllExpences()
    {
        cout<<"Id uzytkownika: " << expences[i].getUserId()<<endl;
        cout<<"Id wydatku: " << expences[i].getMoneyId()<<endl;
+       string date = changeIntDateToDateWithDashes(expences[i].getDate());
        cout<<"Data wydatku: " << expences[i].getDate()<<endl;
        cout<<"Zrodlo wydatku: " << expences[i].getItem()<<endl;
        cout<<"wartosc wydatku: " << expences[i].getAmount()<<endl;

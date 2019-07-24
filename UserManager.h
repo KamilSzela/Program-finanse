@@ -30,7 +30,8 @@ class UserManager
     bool checkIfDateIsCorrect(string &date);
     int checkMaxNumberOfDaysInAMonth(int year,int month);
     int convertStringDateToIntDate(string date);
-    int convertStringToInt(string liczba);
+    int convertStringToInt(string number);
+    string changeIntDateToDateWithDashes(int intDate);
 public:
     UserManager(): fileWithSavedUsers("Users.xml"), fileWithSavedExpences("Expences.xml"), fileWithSavedIncomes("Incomes.xml"){
      loggedUserId = 0;
