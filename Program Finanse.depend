@@ -23,13 +23,15 @@
 1563904869 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\xmlfile.cpp
 	"XMLFile.h"
 
-1563989443 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.cpp
+1564076651 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.cpp
 	"UserManager.h"
 
-1563990521 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.h
+1564076457 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.h
 	<iostream>
+	<cstdio>
 	<sstream>
 	<vector>
+	<time.h>
 	<windows.h>
 	<string>
 	"User.h"

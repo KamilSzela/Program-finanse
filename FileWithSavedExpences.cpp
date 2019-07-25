@@ -10,6 +10,7 @@ string FileWithSavedExpences::changeIntDateToDateWithDashes(int intDate)
     ss << intDate;
     string str = ss.str();
     string stringDate;
+
     for (int i=0; i<str.length(); i++)
     {
         stringDate += str[i];
