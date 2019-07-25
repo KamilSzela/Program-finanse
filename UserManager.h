@@ -1,8 +1,10 @@
 #ifndef USERMANAGER_H
 #define USERMANAGER_H
 #include <iostream>
+#include <cstdio>
 #include <sstream>
 #include <vector>
+#include <time.h>
 #include <windows.h>
 #include <string>
 #include "User.h"
@@ -32,6 +34,9 @@ class UserManager
     int convertStringDateToIntDate(string date);
     int convertStringToInt(string number);
     string changeIntDateToDateWithDashes(int intDate);
+    string getCurrentDate();
+    string convertIntToString(int number);
+    char loadSingleChar();
 public:
     UserManager(): fileWithSavedUsers("Users.xml"), fileWithSavedExpences("Expences.xml"), fileWithSavedIncomes("Incomes.xml"){
      loggedUserId = 0;

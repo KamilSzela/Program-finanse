@@ -206,11 +206,49 @@ bool UserManager::checkIfDateIsCorrect( string &date )
                         return false;
                     }
                 }
-                cout << temporary << endl;
     }
     date = year + month + day;
     return true;
 }
+string UserManager::convertIntToString(int number)
+{
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
+}
+string UserManager::getCurrentDate()
+{
+    string year, month, day, currentDate;
+    struct tm *dateFromComputer;
+    time_t timeInSeconds;
+    time(&timeInSeconds);
+    dateFromComputer = localtime(&timeInSeconds);
+    year = convertIntToString(dateFromComputer->tm_year+1900);
+    month = convertIntToString(dateFromComputer->tm_mon+1);
+    if(month.length() == 1) month = '0' + convertIntToString(dateFromComputer->tm_mon+1);
+    day = convertIntToString(dateFromComputer->tm_mday);
+    if(day.length() == 1) day = '0' + convertIntToString(dateFromComputer->tm_mday);
+    currentDate = year + month + day;
+    return currentDate;
+}
+ char UserManager::loadSingleChar()
+ {
+     string input = "";
+     char charFromKeyboard = {0};
+     while (true)
+     {
+         cin.sync();
+         getline(cin,input);
+         if(input.length()==1)
+         {
+             charFromKeyboard = input[0];
+             return charFromKeyboard;
+         }
+         else
+            cout << "To nie jest pojedynczy znak. Wpisz ponownie: ";
+     }
+ }
 
 void UserManager::addNewIncome()
 {
@@ -222,12 +260,31 @@ void UserManager::addNewIncome()
     string newDate, newItem;
     cout << "Dodawanie nowego przychodu pieniedzy" << endl;
     cout << "---------------------------------" << endl;
+    cout << "Czy dodac przychod z dzisiejsza data(t/n)? " << endl;
+     char choice;
+
     do{
-        cout << endl << "Podaj date otrzymania przychodu(format rr-mm-dd): ";
-       cin >> newDate;
-    }while(checkIfDateIsCorrect(newDate)==false);
+         choice = loadSingleChar();
+        if (choice == 't')
+            {
+                newDate = getCurrentDate();
+                break;
+            }
+        else if (choice != 'n' && choice != 't')
+            cout << "Podales niepoprawny znak, sprobuj ponownie: ";
+
+    }while (choice != 'n');
+
+    if (choice != 't')
+    {
+        do{
+           cout << endl << "Podaj date otrzymania przychodu(format rr-mm-dd): ";
+           cin >> newDate;
+        }while(checkIfDateIsCorrect(newDate)==false);
+    }
 
     newdateAfterConversion = convertStringDateToIntDate(newDate);
+
     cout << "Podaj zrodlo otrzymania przychodu: ";
     cin.sync();
     getline(cin,newItem);
@@ -252,12 +309,31 @@ void UserManager::addNewExpence()
     string newDate, newItem;
     cout << "Dodawanie nowego wydatku" << endl;
     cout << "---------------------------------" << endl;
+    cout << "Czy dodac wydatek z dzisiejsza data(t/n)? " << endl;
+     char choice;
+
     do{
-        cout << endl << "Podaj date wydatku(format rr-mm-dd): ";
-       cin >> newDate;
-    }while(checkIfDateIsCorrect(newDate)==false);
+         choice = loadSingleChar();
+        if (choice == 't')
+            {
+                newDate = getCurrentDate();
+                break;
+            }
+        else if (choice != 'n' && choice != 't')
+            cout << "Podales niepoprawny znak, sprobuj ponownie: ";
+
+    }while (choice != 'n');
+
+    if(choice != 't')
+    {
+        do{
+            cout << endl << "Podaj date wydatku(format rr-mm-dd): ";
+           cin >> newDate;
+        }while(checkIfDateIsCorrect(newDate)==false);
+    }
 
     newdateAfterConversion = convertStringDateToIntDate(newDate);
+
     cout << "Podaj zrodlo wydatku: ";
     cin.sync();
     getline(cin,newItem);
@@ -308,7 +384,7 @@ void UserManager::displayAllExpences()
        cout<<"Id uzytkownika: " << expences[i].getUserId()<<endl;
        cout<<"Id wydatku: " << expences[i].getMoneyId()<<endl;
        string date = changeIntDateToDateWithDashes(expences[i].getDate());
-       cout<<"Data wydatku: " << expences[i].getDate()<<endl;
+       cout<<"Data wydatku: " << date <<endl;
        cout<<"Zrodlo wydatku: " << expences[i].getItem()<<endl;
        cout<<"wartosc wydatku: " << expences[i].getAmount()<<endl;
    }
