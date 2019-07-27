@@ -19,6 +19,8 @@ using namespace std;
 class UserManager
 {
     int loggedUserId;
+    int todaysDayOfAMonth;
+    string currentDate;
     vector <User> users;
     vector <Income> incomes;
     vector <Expence> expences;
@@ -34,13 +36,17 @@ class UserManager
     int convertStringDateToIntDate(string date);
     int convertStringToInt(string number);
     string changeIntDateToDateWithDashes(int intDate);
-    string getCurrentDate();
+    string getCurrentDateFromUnixTime();
     string convertIntToString(int number);
     char loadSingleChar();
+    void displayIncome(Income income);
+    void displayExpence(Expence expence);
 public:
     UserManager(): fileWithSavedUsers("Users.xml"), fileWithSavedExpences("Expences.xml"), fileWithSavedIncomes("Incomes.xml"){
      loggedUserId = 0;
+     todaysDayOfAMonth = 0;
      users = fileWithSavedUsers.loadUsersFromAFile();
+     currentDate = getCurrentDateFromUnixTime();
     };
     void setUserId(int newId);
     void logUserIn();
@@ -50,6 +56,7 @@ public:
     void showAllUsers();
     void addNewIncome();
     void addNewExpence();
+    void displaySummaryOfLastMonth();
     void displayAllIncomes();
     void displayAllExpences();
 };

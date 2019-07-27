@@ -62,6 +62,10 @@ void FinanceProgram::addNewExpence()
 {
     userManager.addNewExpence();
 }
+void FinanceProgram::displaySummaryOfLastMonth()
+{
+    userManager.displaySummaryOfLastMonth();
+}
 void FinanceProgram::displayAllIncomes()
 {
     userManager.displayAllIncomes();

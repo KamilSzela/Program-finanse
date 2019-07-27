@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1563904870 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\main.cpp
+1564215854 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\main.cpp
 	<iostream>
 	"FinanceProgram.h"
 
-1563904870 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.h
+1564215685 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.h
 	<iostream>
 	<windows.h>
 	"UserManager.h"
 
-1563904870 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.cpp
+1564215698 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\financeprogram.cpp
 	"FinanceProgram.h"
 
 1563904869 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedusers.cpp
@@ -23,10 +23,10 @@
 1563904869 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\xmlfile.cpp
 	"XMLFile.h"
 
-1564076651 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.cpp
+1564215958 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.cpp
 	"UserManager.h"
 
-1564076457 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.h
+1564215685 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.h
 	<iostream>
 	<cstdio>
 	<sstream>
@@ -80,7 +80,7 @@
 	<iostream>
 	"Money.h"
 
-1563990142 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedexpences.cpp
+1564077737 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedexpences.cpp
 	"FileWithSavedExpences.h"
 
 1563990108 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\filewithsavedexpences.h
