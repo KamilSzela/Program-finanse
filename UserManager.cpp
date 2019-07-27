@@ -217,7 +217,7 @@ string UserManager::convertIntToString(int number)
     string str = ss.str();
     return str;
 }
-string UserManager::getCurrentDate()
+string UserManager::getCurrentDateFromUnixTime()
 {
     string year, month, day, currentDate;
     struct tm *dateFromComputer;
@@ -229,6 +229,7 @@ string UserManager::getCurrentDate()
     if(month.length() == 1) month = '0' + convertIntToString(dateFromComputer->tm_mon+1);
     day = convertIntToString(dateFromComputer->tm_mday);
     if(day.length() == 1) day = '0' + convertIntToString(dateFromComputer->tm_mday);
+    todaysDayOfAMonth = dateFromComputer->tm_mday;
     currentDate = year + month + day;
     return currentDate;
 }
@@ -267,7 +268,7 @@ void UserManager::addNewIncome()
          choice = loadSingleChar();
         if (choice == 't')
             {
-                newDate = getCurrentDate();
+                newDate = currentDate;
                 break;
             }
         else if (choice != 'n' && choice != 't')
@@ -275,7 +276,7 @@ void UserManager::addNewIncome()
 
     }while (choice != 'n');
 
-    if (choice != 't')
+    if (choice == 'n')
     {
         do{
            cout << endl << "Podaj date otrzymania przychodu(format rr-mm-dd): ";
@@ -316,7 +317,7 @@ void UserManager::addNewExpence()
          choice = loadSingleChar();
         if (choice == 't')
             {
-                newDate = getCurrentDate();
+                newDate = currentDate;
                 break;
             }
         else if (choice != 'n' && choice != 't')
@@ -324,7 +325,7 @@ void UserManager::addNewExpence()
 
     }while (choice != 'n');
 
-    if(choice != 't')
+    if(choice == 'n')
     {
         do{
             cout << endl << "Podaj date wydatku(format rr-mm-dd): ";
@@ -364,16 +365,62 @@ string UserManager::changeIntDateToDateWithDashes(int intDate)
     }
     return stringDate;
 }
+void UserManager::displaySummaryOfLastMonth()
+{
+    int sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
+    int beginOfCurrentMonth = convertStringToInt(currentDate) - todaysDayOfAMonth;
+    cout << "Przychody z obecnego miesiaca: " << endl;
+    cout << "-------------------------------" << endl;
+       for (int i=0; i < incomes.size(); i++)
+   {
+       if(incomes[i].getDate() >= beginOfCurrentMonth)
+       {
+           displayIncome(incomes[i]);
+           sumOfIncomes += incomes[i].getAmount();
+           cout<<"----------------------" << endl;
+       }
+   }
+   cout << "Wydatki z obecnego miesiaca: " << endl;
+   cout << "-------------------------------" << endl;
+       for (int i=0; i < expences.size(); i++)
+   {
+       if(expences[i].getDate() >= beginOfCurrentMonth)
+       {
+           displayExpence(expences[i]);
+           sumOfExpences += expences[i].getAmount();
+           cout<<"----------------------" << endl;
+       }
+   }
+   sumOfMoney = sumOfIncomes - sumOfExpences;
+   cout << "Suma przychodow z obecnego miesiaca: " << sumOfIncomes << endl;
+   cout << "Suma wydatkow z obecnego miesiaca: " << sumOfExpences << endl;
+   cout << "Bilans w obecnym miesiacu: " << sumOfMoney << endl;
+   system("pause");
+}
+void UserManager::displayIncome(Income income)
+{
+       cout<<"Id uzytkownika: " << income.getUserId()<<endl;
+       cout<<"Id przychodu: " << income.getMoneyId()<<endl;
+       string date = changeIntDateToDateWithDashes(income.getDate());
+       cout<<"Data przychodu: " << date <<endl;
+       cout<<"Zrodlo przychodu: " << income.getItem()<<endl;
+       cout<<"wartosc przychodu: " << income.getAmount()<<endl;
+}
+void UserManager::displayExpence(Expence expence)
+{
+       cout<<"Id uzytkownika: " << expence.getUserId()<<endl;
+       cout<<"Id wydatku: " << expence.getMoneyId()<<endl;
+       string date = changeIntDateToDateWithDashes(expence.getDate());
+       cout<<"Data wydatku: " << date <<endl;
+       cout<<"Zrodlo wydatku: " << expence.getItem()<<endl;
+       cout<<"wartosc wydatku: " << expence.getAmount()<<endl;
+}
 void UserManager::displayAllIncomes()
 {
       for (int i=0; i < incomes.size(); i++)
    {
-       cout<<"Id uzytkownika: " << incomes[i].getUserId()<<endl;
-       cout<<"Id przychodu: " << incomes[i].getMoneyId()<<endl;
-       string date = changeIntDateToDateWithDashes(incomes[i].getDate());
-       cout<<"Data przychodu: " << date <<endl;
-       cout<<"Zrodlo przychodu: " << incomes[i].getItem()<<endl;
-       cout<<"wartosc przychodu: " << incomes[i].getAmount()<<endl;
+       displayIncome(incomes[i]);
+       cout<<"----------------------" << endl;
    }
    system("pause");
 }
@@ -381,12 +428,8 @@ void UserManager::displayAllExpences()
 {
       for (int i=0; i < expences.size(); i++)
    {
-       cout<<"Id uzytkownika: " << expences[i].getUserId()<<endl;
-       cout<<"Id wydatku: " << expences[i].getMoneyId()<<endl;
-       string date = changeIntDateToDateWithDashes(expences[i].getDate());
-       cout<<"Data wydatku: " << date <<endl;
-       cout<<"Zrodlo wydatku: " << expences[i].getItem()<<endl;
-       cout<<"wartosc wydatku: " << expences[i].getAmount()<<endl;
+       displayExpence(expences[i]);
+       cout<<"----------------------" << endl;
    }
    system("pause");
 }

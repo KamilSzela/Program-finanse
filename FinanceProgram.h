@@ -20,6 +20,7 @@ public:
     void showAllUsers();
     void addNewIncome();
     void addNewExpence();
+    void displaySummaryOfLastMonth();
     void displayAllIncomes();
     void displayAllExpences();
 };
