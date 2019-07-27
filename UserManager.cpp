@@ -392,10 +392,53 @@ void UserManager::displaySummaryOfLastMonth()
        }
    }
    sumOfMoney = sumOfIncomes - sumOfExpences;
-   cout << "Suma przychodow z obecnego miesiaca: " << sumOfIncomes << endl;
-   cout << "Suma wydatkow z obecnego miesiaca: " << sumOfExpences << endl;
-   cout << "Bilans w obecnym miesiacu: " << sumOfMoney << endl;
-   system("pause");
+    if (sumOfIncomes == 0) cout << "Brak dochodow w tym miesiacu." << endl;
+    else cout << "Suma przychodow z obecnego miesiaca: " << sumOfIncomes << endl;
+    if (sumOfExpences == 0) cout << "Brak wydatkow w tym miesiacu." << endl;
+    else cout << "Suma wydatkow z obecnego miesiaca: " << sumOfExpences << endl;
+    if(sumOfExpences !=0 && sumOfIncomes != 0)
+    cout << "Bilans w obecnym miesiacu: " << sumOfMoney << endl;
+    system("pause");
+}
+void UserManager::displaySummaryOfPreviousMonth()
+{
+    int sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
+    int beginOfCurrentMonth = convertStringToInt(currentDate) - todaysDayOfAMonth;
+    int previousMonthBegin = convertStringToInt(currentDate) - todaysDayOfAMonth - 100;
+    cout << "Przychody z poprzedniego miesiaca: " << endl;
+    cout << "-------------------------------" << endl;
+
+       for (int i=0; i < incomes.size(); i++)
+   {
+       if(incomes[i].getDate() <= beginOfCurrentMonth && incomes[i].getDate() >= previousMonthBegin)
+       {
+           displayIncome(incomes[i]);
+           sumOfIncomes += incomes[i].getAmount();
+           cout<<"----------------------" << endl;
+       }
+   }
+
+   cout << "Wydatki z poprzedniego miesiaca: " << endl;
+   cout << "-------------------------------" << endl;
+
+       for (int i=0; i < expences.size(); i++)
+   {
+       if(incomes[i].getDate() <= beginOfCurrentMonth && incomes[i].getDate() >= previousMonthBegin)
+       {
+           displayExpence(expences[i]);
+           sumOfExpences += expences[i].getAmount();
+           cout<<"----------------------" << endl;
+       }
+   }
+
+    sumOfMoney = sumOfIncomes - sumOfExpences;
+    if (sumOfIncomes == 0) cout << "Brak dochodow w poprzednim miesiacu." << endl;
+    else cout << "Suma przychodow z poprzedniego miesiaca: " << sumOfIncomes << endl;
+    if (sumOfExpences == 0) cout << "Brak wydatkow w poprzednim miesiacu." << endl;
+    else cout << "Suma wydatkow z poprzedniego miesiaca: " << sumOfExpences << endl;
+    if(sumOfExpences !=0 && sumOfIncomes != 0)
+    cout << "Bilans w poprzednim miesiacu: " << sumOfMoney << endl;
+    system("pause");
 }
 void UserManager::displayIncome(Income income)
 {
