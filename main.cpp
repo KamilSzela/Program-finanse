@@ -30,6 +30,7 @@ int main()
                       case '1': program.addNewIncome(); break;
                       case '2': program.addNewExpence(); break;
                       case '3': program.displaySummaryOfLastMonth(); break;
+                      case '4': program.displaySummaryOfPreviousMonth(); break;
                       case '7': program.logUserOut(); break;
                       case '8': program.displayAllIncomes(); break;
                       case '9': program.displayAllExpences(); break;

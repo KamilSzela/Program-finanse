@@ -66,6 +66,10 @@ void FinanceProgram::displaySummaryOfLastMonth()
 {
     userManager.displaySummaryOfLastMonth();
 }
+void FinanceProgram::displaySummaryOfPreviousMonth()
+{
+     userManager.displaySummaryOfPreviousMonth();
+}
 void FinanceProgram::displayAllIncomes()
 {
     userManager.displayAllIncomes();

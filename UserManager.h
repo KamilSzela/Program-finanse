@@ -57,6 +57,7 @@ public:
     void addNewIncome();
     void addNewExpence();
     void displaySummaryOfLastMonth();
+    void displaySummaryOfPreviousMonth();
     void displayAllIncomes();
     void displayAllExpences();
 };
