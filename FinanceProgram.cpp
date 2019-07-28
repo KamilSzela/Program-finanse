@@ -70,6 +70,10 @@ void FinanceProgram::displaySummaryOfPreviousMonth()
 {
      userManager.displaySummaryOfPreviousMonth();
 }
+void FinanceProgram::displaySummaryOfGivenTime()
+{
+    userManager.displaySummaryOfGivenTime();
+}
 void FinanceProgram::displayAllIncomes()
 {
     userManager.displayAllIncomes();

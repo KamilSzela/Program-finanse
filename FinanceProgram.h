@@ -22,6 +22,7 @@ public:
     void addNewExpence();
     void displaySummaryOfLastMonth();
     void displaySummaryOfPreviousMonth();
+    void displaySummaryOfGivenTime();
     void displayAllIncomes();
     void displayAllExpences();
 };
