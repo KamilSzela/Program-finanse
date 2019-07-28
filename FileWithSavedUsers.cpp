@@ -57,3 +57,29 @@ void FileWithSavedUsers::addNewUserToAFile(User newUser)
     xmlFile.AddElem("SURNAME", newUser.getUserSurname());
     xmlFile.Save("Users.xml");
 }
+void FileWithSavedUsers::changePassword(int userId, string newPassword)
+{
+ CMarkup xml;
+ bool fileExists = xml.Load("Users.xml");
+  if (fileExists == false)
+ {
+     cout << "Brak zapisanych uzytkownikiow";
+     Sleep(1000);
+     return;
+ }
+ xml.FindElem();
+ xml.IntoElem();
+ while(xml.FindElem("USER"))
+ {
+     xml.IntoElem();
+     xml.FindElem("USER_ID");
+     int loadedUserId = atoi( MCD_2PCSZ(xml.GetData()) );
+     if(loadedUserId == userId)
+     {
+         xml.FindElem("PASSWORD");
+         xml.SetData(newPassword, 0);
+     }
+     xml.OutOfElem();
+ }
+ xml.Save("Users.xml");
+}

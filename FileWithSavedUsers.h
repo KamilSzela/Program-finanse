@@ -12,5 +12,6 @@ class FileWithSavedUsers : public XmlFile
       vector <User> loadUsersFromAFile();
       FileWithSavedUsers(string fileWithUsers): XmlFile(fileWithUsers){};
       void addNewUserToAFile(User newUser);
+      void changePassword(int userId, string newPassword);
 };
 #endif

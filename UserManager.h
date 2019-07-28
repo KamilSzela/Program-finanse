@@ -59,6 +59,7 @@ public:
     void displaySummaryOfLastMonth();
     void displaySummaryOfPreviousMonth();
     void displaySummaryOfGivenTime();
+    void changePasswordOfLoggedUser();
     void displayAllIncomes();
     void displayAllExpences();
 };
