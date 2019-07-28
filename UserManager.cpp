@@ -83,6 +83,8 @@ void UserManager::logUserIn()
                     loggedUserId = i -> getUserId();
                     incomes = fileWithSavedIncomes.loadIncomesFromAFile(loggedUserId);
                     expences = fileWithSavedExpences.loadExpencesFromAFile(loggedUserId);
+                    sort(incomes.begin(), incomes.end());
+                    sort(expences.begin(), expences.end());
                     return;
                 }
                 else {

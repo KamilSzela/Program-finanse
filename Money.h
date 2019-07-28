@@ -10,6 +10,10 @@ class Money
     int  date;
     string item;
 public:
+
+ bool operator< (const Money &other) const {
+        return date < other.date;
+    }
     int getMoneyId();
     void setMoneyId(int newMoneyId);
     int getUserId();
