@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <sstream>
 #include <vector>
+#include <algorithm>
 #include <time.h>
 #include <windows.h>
 #include <string>
