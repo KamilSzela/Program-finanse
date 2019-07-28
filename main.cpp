@@ -32,6 +32,7 @@ int main()
                       case '3': program.displaySummaryOfLastMonth(); break;
                       case '4': program.displaySummaryOfPreviousMonth(); break;
                       case '5': program.displaySummaryOfGivenTime(); break;
+                      case '6': program.changePasswordOfLoggedUser(); break;
                       case '7': program.logUserOut(); break;
                       case '8': program.displayAllIncomes(); break;
                       case '9': program.displayAllExpences(); break;

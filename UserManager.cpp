@@ -499,6 +499,23 @@ void UserManager::displaySummaryOfGivenTime()
     cout << "Bilans w podanym okresie: " << sumOfMoney << endl;
     system("pause");
 }
+void UserManager::changePasswordOfLoggedUser()
+{
+    string newPassword = "";
+    cout << "Podaj nowe haslo: ";
+    cin >> newPassword;
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getUserId() == loggedUserId)
+        {
+            itr -> setUserPassword(newPassword);
+            fileWithSavedUsers.changePassword(loggedUserId, newPassword);
+            cout << "Haslo zostalo zmienione." << endl << endl;
+            system("pause");
+        }
+    }
+}
 void UserManager::displayIncome(Income income)
 {
        cout<<"Id uzytkownika: " << income.getUserId()<<endl;

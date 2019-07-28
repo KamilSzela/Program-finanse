@@ -74,6 +74,10 @@ void FinanceProgram::displaySummaryOfGivenTime()
 {
     userManager.displaySummaryOfGivenTime();
 }
+void FinanceProgram::changePasswordOfLoggedUser()
+{
+    userManager.changePasswordOfLoggedUser();
+}
 void FinanceProgram::displayAllIncomes()
 {
     userManager.displayAllIncomes();
