@@ -186,6 +186,14 @@ bool UserManager::checkIfDateIsCorrect( string &date )
     int instance = 0;
     for(int i = 0; i < date.length(); i++)
     {
+        if(!isdigit(date[i])&&date[i]!='-'&&date[i]!=','&&date[i]!='.') {
+                cout << "Podales niepoprawny format daty.";
+                Sleep(1000);
+                return false;
+        }
+    }
+    for(int i = 0; i < date.length(); i++)
+    {
         if(date[i]=='-'||date[i]==','||date[i]=='.')
             {
                 i++ ;
