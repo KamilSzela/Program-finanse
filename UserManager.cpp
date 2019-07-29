@@ -104,8 +104,6 @@ void UserManager::logUserIn()
 void UserManager::logUserOut()
 {
     loggedUserId = 0;
-    incomes.clear();
-
     cout << endl << "Wylogowales sie. ";
     Sleep(1000);
 }
@@ -146,6 +144,27 @@ int UserManager::convertStringToInt(string number)
     iss >> intNumber;
 
     return intNumber;
+}
+float UserManager::convertStringToFloat(string number)
+{
+    float floatNumber;
+    istringstream iss(number);
+    iss >> floatNumber;
+
+    return floatNumber;
+}
+string UserManager::changeCommasToDots(string stringAmount)
+{
+    string temporary;
+    for (int i=0; i<stringAmount.length(); i++)
+    {
+        if(stringAmount[i] == ',')
+        {
+            temporary += '.';
+        }
+        else temporary += stringAmount[i];
+    }
+    return temporary;
 }
 int UserManager::convertStringDateToIntDate(string date)
 {
@@ -228,8 +247,10 @@ string UserManager::getCurrentDateFromUnixTime()
     dateFromComputer = localtime(&timeInSeconds);
     year = convertIntToString(dateFromComputer->tm_year+1900);
     month = convertIntToString(dateFromComputer->tm_mon+1);
+
     if(month.length() == 1) month = '0' + convertIntToString(dateFromComputer->tm_mon+1);
     day = convertIntToString(dateFromComputer->tm_mday);
+
     if(day.length() == 1) day = '0' + convertIntToString(dateFromComputer->tm_mday);
     todaysDayOfAMonth = dateFromComputer->tm_mday;
     currentDate = year + month + day;
@@ -256,15 +277,16 @@ string UserManager::getCurrentDateFromUnixTime()
 void UserManager::addNewIncome()
 {
     Income newIncome;
-    int newIncomeId, newAmount, newdateAfterConversion;
+    int newIncomeId, newdateAfterConversion;
+    float newAmount;
 
     newIncomeId = fileWithSavedIncomes.getLastIncomeId()+1;
 
-    string newDate, newItem;
+    string newDate, newItem, newStringAmount;
     cout << "Dodawanie nowego przychodu pieniedzy" << endl;
     cout << "---------------------------------" << endl;
     cout << "Czy dodac przychod z dzisiejsza data(t/n)? " << endl;
-     char choice;
+    char choice;
 
     do{
          choice = loadSingleChar();
@@ -281,7 +303,7 @@ void UserManager::addNewIncome()
     if (choice == 'n')
     {
         do{
-           cout << endl << "Podaj date otrzymania przychodu(format rr-mm-dd): ";
+           cout << endl << "Podaj date otrzymania przychodu(format rrrr-mm-dd): ";
            cin >> newDate;
         }while(checkIfDateIsCorrect(newDate)==false);
     }
@@ -292,7 +314,10 @@ void UserManager::addNewIncome()
     cin.sync();
     getline(cin,newItem);
     cout << "Podaj ilosc otrzymanego przychodu: ";
-    cin >> newAmount;
+    cin >> newStringAmount;
+    newStringAmount = changeCommasToDots(newStringAmount);
+    newAmount = convertStringToFloat(newStringAmount);
+
     newIncome.setMoneyId( newIncomeId );
     newIncome.setUserId( loggedUserId );
     newIncome.setDate( newdateAfterConversion );
@@ -305,11 +330,12 @@ void UserManager::addNewIncome()
 void UserManager::addNewExpence()
 {
     Expence newExpence;
-    int newExpenceId, newAmount, newdateAfterConversion;
+    int newExpenceId, newdateAfterConversion;
+    float newAmount;
 
     newExpenceId = fileWithSavedExpences.getLastExpenceId()+1;
 
-    string newDate, newItem;
+    string newDate, newItem, newStringAmount;
     cout << "Dodawanie nowego wydatku" << endl;
     cout << "---------------------------------" << endl;
     cout << "Czy dodac wydatek z dzisiejsza data(t/n)? " << endl;
@@ -330,7 +356,7 @@ void UserManager::addNewExpence()
     if(choice == 'n')
     {
         do{
-            cout << endl << "Podaj date wydatku(format rr-mm-dd): ";
+            cout << endl << "Podaj date wydatku(format rrrr-mm-dd): ";
            cin >> newDate;
         }while(checkIfDateIsCorrect(newDate)==false);
     }
@@ -341,7 +367,10 @@ void UserManager::addNewExpence()
     cin.sync();
     getline(cin,newItem);
     cout << "Podaj rozmiar wydatku: ";
-    cin >> newAmount;
+    cin >> newStringAmount;
+    newStringAmount = changeCommasToDots(newStringAmount);
+    newAmount = convertStringToFloat(newStringAmount);
+
     newExpence.setMoneyId( newExpenceId );
     newExpence.setUserId( loggedUserId );
     newExpence.setDate( newdateAfterConversion );
@@ -369,7 +398,7 @@ string UserManager::changeIntDateToDateWithDashes(int intDate)
 }
 void UserManager::displaySummaryOfLastMonth()
 {
-    int sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
+    float sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
     int beginOfCurrentMonth = convertStringToInt(currentDate) - todaysDayOfAMonth;
     cout << "Przychody z obecnego miesiaca: " << endl;
     cout << "-------------------------------" << endl;
@@ -406,7 +435,7 @@ void UserManager::displaySummaryOfLastMonth()
 }
 void UserManager::displaySummaryOfPreviousMonth()
 {
-    int sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
+    float sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
     int beginOfCurrentMonth = convertStringToInt(currentDate) - todaysDayOfAMonth;
     int previousMonthBegin = convertStringToInt(currentDate) - todaysDayOfAMonth - 100;
     cout << "Przychody z poprzedniego miesiaca: " << endl;
@@ -449,7 +478,7 @@ void UserManager::displaySummaryOfGivenTime()
 {
     string firstDate , secondDate;
     int firstDateAfterConversion, secondDateAfterConversion;
-    int sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
+    float sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
         do
         {
             cout << endl << "Podaj date poczatku okresu z ktorego obliczyc bilans(format rr-mm-dd): ";

@@ -36,6 +36,8 @@ class UserManager
     int checkMaxNumberOfDaysInAMonth(int year,int month);
     int convertStringDateToIntDate(string date);
     int convertStringToInt(string number);
+    float convertStringToFloat(string number);
+    string changeCommasToDots(string stringAmount);
     string changeIntDateToDateWithDashes(int intDate);
     string getCurrentDateFromUnixTime();
     string convertIntToString(int number);

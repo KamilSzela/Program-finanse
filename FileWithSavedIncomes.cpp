@@ -20,6 +20,8 @@ string FileWithSavedIncomes::changeIntDateToDateWithDashes(int intDate)
     }
     return stringDate;
 }
+
+
 string FileWithSavedIncomes::changeDateWithDashesToNumbersOnlyDate(string dateWithDashes)
 {
     string dateNumbersOnly;
@@ -49,9 +51,9 @@ void FileWithSavedIncomes::addNewIncomeToAFile(Income newIncome)
     xmlFile.AddElem("USER_ID", newIncome.getUserId());
     xmlFile.AddElem("DATE", dateWithDashes);
     xmlFile.AddElem("ITEM", newIncome.getItem());
-    xmlFile.AddElem("AMOUNT", newIncome.getAmount());
+    string amountString = convertFloatToString(newIncome.getAmount());
+    xmlFile.AddElem("AMOUNT", amountString);
     xmlFile.Save("Incomes.xml");
-
 }
 vector <Income> FileWithSavedIncomes::loadIncomesFromAFile(int loggedUserId)
 {
@@ -85,7 +87,7 @@ vector <Income> FileWithSavedIncomes::loadIncomesFromAFile(int loggedUserId)
      MCD_STR strSN = xml.GetData();
      newIncome.setItem(strSN);
      xml.FindElem("AMOUNT");
-     int newAmount = atoi( MCD_2PCSZ(xml.GetData()) );
+     float newAmount = atof( MCD_2PCSZ(xml.GetData()) );
      newIncome.setAmount(newAmount);
      xml.OutOfElem();
      if(newUserId == loggedUserId)

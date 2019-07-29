@@ -6,7 +6,8 @@ using namespace std;
 
 class Money
 {
-    int moneyId, userId, amount;
+    int moneyId, userId;
+    float amount;
     int  date;
     string item;
 public:
@@ -22,8 +23,8 @@ public:
     void setDate(int newDate);
     string getItem();
     void setItem(string newItem);
-    int getAmount();
-    void setAmount(int newAmount);
+    float getAmount();
+    void setAmount(float newAmount);
 };
 
 #endif

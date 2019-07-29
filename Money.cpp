@@ -32,11 +32,11 @@
     {
         item = newItem;
     }
-    int Money::getAmount()
+    float Money::getAmount()
     {
         return amount;
     }
-    void Money::setAmount(int newAmount)
+    void Money::setAmount(float newAmount)
     {
         amount = newAmount;
     }

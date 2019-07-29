@@ -50,7 +50,8 @@ void FileWithSavedExpences::addNewExpenceToAFile(Expence newExpence)
     xmlFile.AddElem("USER_ID", newExpence.getUserId());
     xmlFile.AddElem("DATE", dateWithDashes);
     xmlFile.AddElem("ITEM", newExpence.getItem());
-    xmlFile.AddElem("AMOUNT", newExpence.getAmount());
+    string amountString = convertFloatToString(newExpence.getAmount());
+    xmlFile.AddElem("AMOUNT", amountString);
     xmlFile.Save("Expences.xml");
 
 }
@@ -86,7 +87,7 @@ vector <Expence> FileWithSavedExpences::loadExpencesFromAFile(int loggedUserId)
      MCD_STR strSN = xml.GetData();
      newExpence.setItem(strSN);
      xml.FindElem("AMOUNT");
-     int newAmount = atoi( MCD_2PCSZ(xml.GetData()) );
+     float newAmount = atof( MCD_2PCSZ(xml.GetData()) );
      newExpence.setAmount(newAmount);
      xml.OutOfElem();
      if(newUserId == loggedUserId)
