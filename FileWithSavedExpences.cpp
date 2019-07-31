@@ -50,7 +50,7 @@ void FileWithSavedExpences::addNewExpenceToAFile(Expence newExpence)
     xmlFile.AddElem("USER_ID", newExpence.getUserId());
     xmlFile.AddElem("DATE", dateWithDashes);
     xmlFile.AddElem("ITEM", newExpence.getItem());
-    string amountString = convertFloatToString(newExpence.getAmount());
+    string amountString = AuxiliaryMethods::convertFloatToString(newExpence.getAmount());
     xmlFile.AddElem("AMOUNT", amountString);
     xmlFile.Save("Expences.xml");
 

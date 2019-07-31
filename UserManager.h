@@ -9,8 +9,7 @@
 #include <windows.h>
 #include <string>
 #include "User.h"
-#include "Income.h"
-#include "XMLFile.h"
+#include "AuxiliaryMethods.h"
 #include "FileWithSavedUsers.h"
 #include "FileWithSavedExpences.h"
 #include "FileWithSavedIncomes.h"
@@ -35,13 +34,9 @@ class UserManager
     bool checkIfDateIsCorrect(string &date);
     int checkMaxNumberOfDaysInAMonth(int year,int month);
     int convertStringDateToIntDate(string date);
-    int convertStringToInt(string number);
-    float convertStringToFloat(string number);
     string changeCommasToDots(string stringAmount);
     string changeIntDateToDateWithDashes(int intDate);
     string getCurrentDateFromUnixTime();
-    string convertIntToString(int number);
-    char loadSingleChar();
     void displayIncome(Income income);
     void displayExpence(Expence expence);
 public:

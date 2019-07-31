@@ -12,7 +12,6 @@ class XmlFile
 
 public:
     XmlFile(string filename): XML_FILE_NAME(filename) {};
-    string convertFloatToString(float number);
     string getFileName();
 };
 

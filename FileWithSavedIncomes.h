@@ -2,6 +2,7 @@
 #define FILEWITHSAVEDINCOMES_H
 #include <iostream>
 #include "Income.h"
+#include "AuxiliaryMethods.h"
 #include <vector>
 #include <windows.h>
 #include "XMLFile.h"

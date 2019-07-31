@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include "Expence.h"
+#include "AuxiliaryMethods.h"
 #include <vector>
 #include <windows.h>
 #include "XMLFile.h"
