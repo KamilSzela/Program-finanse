@@ -51,7 +51,7 @@ void FileWithSavedIncomes::addNewIncomeToAFile(Income newIncome)
     xmlFile.AddElem("USER_ID", newIncome.getUserId());
     xmlFile.AddElem("DATE", dateWithDashes);
     xmlFile.AddElem("ITEM", newIncome.getItem());
-    string amountString = convertFloatToString(newIncome.getAmount());
+    string amountString = AuxiliaryMethods::convertFloatToString(newIncome.getAmount());
     xmlFile.AddElem("AMOUNT", amountString);
     xmlFile.Save("Incomes.xml");
 }
