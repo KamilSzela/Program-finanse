@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="AuxiliaryMethods.cpp" />
 		<Unit filename="AuxiliaryMethods.h" />
+		<Unit filename="DateManager.cpp" />
+		<Unit filename="DateManager.h" />
 		<Unit filename="Expence.cpp" />
 		<Unit filename="Expence.h" />
 		<Unit filename="FileWithSavedExpences.cpp" />

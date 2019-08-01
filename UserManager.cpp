@@ -107,36 +107,7 @@ void UserManager::logUserOut()
     cout << endl << "Wylogowales sie. ";
     Sleep(1000);
 }
-int UserManager::checkMaxNumberOfDaysInAMonth(int year, int month)
-{
-      switch (month)
-    {
-case (1):
-case(3):
-case(5):
-case(7):
-case(8):
-case(10):
-case(12):
-    return 31;
-    break;
-case(4):
-case(6):
-case(9):
-case(11):
-    return 30;
-    break;
-case(2):
-    if ((year%4==0&&year%100!=0)||(year%400==0))
-       {
-           return 29;
-       }
-    else
-       {
-           return 28;
-       }
-}
-}
+
 string UserManager::changeCommasToDots(string stringAmount)
 {
     string temporary;
@@ -149,97 +120,6 @@ string UserManager::changeCommasToDots(string stringAmount)
         else temporary += stringAmount[i];
     }
     return temporary;
-}
-int UserManager::convertStringDateToIntDate(string date)
-{
-    string temporaryString = "";
-     for(int i = 0; i < date.length(); i++)
-     {
-         if(isdigit(date[i]))
-            {
-              temporaryString+=date[i];
-            }
-     }
-     int number = AuxiliaryMethods::convertStringToInt(temporaryString);
-     return number;
-}
-bool UserManager::checkIfDateIsCorrect( string &date )
-{
-    string year, month, day;
-    string temporary;
-    int instance = 0;
-    for(int i = 0; i < date.length(); i++)
-    {
-        if(!isdigit(date[i])&&date[i]!='-'&&date[i]!=','&&date[i]!='.') {
-                cout << "Podales niepoprawny format daty.";
-                Sleep(1000);
-                return false;
-        }
-    }
-    for(int i = 0; i < date.length(); i++)
-    {
-        if(date[i]=='-'||date[i]==','||date[i]=='.')
-            {
-                i++ ;
-                instance++;
-
-                if(instance == 1)
-                {
-                    year = temporary;
-                    temporary = "";
-                    if(AuxiliaryMethods::convertStringToInt(year) < 2000)
-                        {
-                            cout<< "Niepoprawny rok";
-                            return false;
-                        }
-                }
-                if(instance == 2)
-                {
-                    if (temporary.length() == 1) {month = '0'+ temporary;}
-                    else {month = temporary;}
-                    temporary = "";
-                    if(AuxiliaryMethods::convertStringToInt(month) < 0 || AuxiliaryMethods::convertStringToInt(month) > 12)
-                    {
-                        cout<<"Niepoprawny miesiac";
-                        return false;
-                    }
-                }
-            }
-
-            temporary += date[i];
-
-              if(i == date.length()-1)
-                {
-                     if (temporary.length() == 1) {day = '0'+ temporary;}
-                    else {day = temporary;}
-                    int maxNumberDays = checkMaxNumberOfDaysInAMonth(AuxiliaryMethods::convertStringToInt(year), AuxiliaryMethods::convertStringToInt(month));
-                    if(AuxiliaryMethods::convertStringToInt(day)>maxNumberDays || AuxiliaryMethods::convertStringToInt(day)<0)
-                    {
-                        cout<<"Niepoprawna liczba dni";
-                        return false;
-                    }
-                }
-    }
-    date = year + month + day;
-    return true;
-}
-string UserManager::getCurrentDateFromUnixTime()
-{
-    string year, month, day, currentDate;
-    struct tm *dateFromComputer;
-    time_t timeInSeconds;
-    time(&timeInSeconds);
-    dateFromComputer = localtime(&timeInSeconds);
-    year = AuxiliaryMethods::convertIntToString(dateFromComputer->tm_year+1900);
-    month = AuxiliaryMethods::convertIntToString(dateFromComputer->tm_mon+1);
-
-    if(month.length() == 1) month = '0' + AuxiliaryMethods::convertIntToString(dateFromComputer->tm_mon+1);
-    day = AuxiliaryMethods::convertIntToString(dateFromComputer->tm_mday);
-
-    if(day.length() == 1) day = '0' + AuxiliaryMethods::convertIntToString(dateFromComputer->tm_mday);
-    todaysDayOfAMonth = dateFromComputer->tm_mday;
-    currentDate = year + month + day;
-    return currentDate;
 }
 
 void UserManager::addNewIncome()
@@ -260,7 +140,7 @@ void UserManager::addNewIncome()
          choice = AuxiliaryMethods::loadSingleChar();
         if (choice == 't')
             {
-                newDate = currentDate;
+                newDate = dateManager.getCurrentDate();
                 break;
             }
         else if (choice != 'n' && choice != 't')
@@ -273,10 +153,10 @@ void UserManager::addNewIncome()
         do{
            cout << endl << "Podaj date otrzymania przychodu(format rrrr-mm-dd): ";
            cin >> newDate;
-        }while(checkIfDateIsCorrect(newDate)==false);
+        }while(dateManager.checkIfDateIsCorrect(newDate)==false);
     }
 
-    newdateAfterConversion = convertStringDateToIntDate(newDate);
+    newdateAfterConversion = dateManager.convertStringDateToIntDate(newDate);
 
     cout << "Podaj zrodlo otrzymania przychodu: ";
     cin.sync();
@@ -313,7 +193,7 @@ void UserManager::addNewExpence()
          choice = AuxiliaryMethods::loadSingleChar();
         if (choice == 't')
             {
-                newDate = currentDate;
+                newDate = dateManager.getCurrentDate();
                 break;
             }
         else if (choice != 'n' && choice != 't')
@@ -326,10 +206,10 @@ void UserManager::addNewExpence()
         do{
             cout << endl << "Podaj date wydatku(format rrrr-mm-dd): ";
            cin >> newDate;
-        }while(checkIfDateIsCorrect(newDate)==false);
+        }while(dateManager.checkIfDateIsCorrect(newDate)==false);
     }
 
-    newdateAfterConversion = convertStringDateToIntDate(newDate);
+    newdateAfterConversion = dateManager.convertStringDateToIntDate(newDate);
 
     cout << "Podaj zrodlo wydatku: ";
     cin.sync();
@@ -367,7 +247,7 @@ string UserManager::changeIntDateToDateWithDashes(int intDate)
 void UserManager::displaySummaryOfLastMonth()
 {
     float sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
-    int beginOfCurrentMonth = AuxiliaryMethods::convertStringToInt(currentDate) - todaysDayOfAMonth;
+    int beginOfCurrentMonth = AuxiliaryMethods::convertStringToInt(dateManager.getCurrentDate()) - dateManager.getTodaysDayOfAMonth();
     cout << "Przychody z obecnego miesiaca: " << endl;
     cout << "-------------------------------" << endl;
        for (int i=0; i < incomes.size(); i++)
@@ -404,8 +284,8 @@ void UserManager::displaySummaryOfLastMonth()
 void UserManager::displaySummaryOfPreviousMonth()
 {
     float sumOfMoney = 0, sumOfIncomes = 0, sumOfExpences = 0;
-    int beginOfCurrentMonth = AuxiliaryMethods::convertStringToInt(currentDate) - todaysDayOfAMonth;
-    int previousMonthBegin = AuxiliaryMethods::convertStringToInt(currentDate) - todaysDayOfAMonth - 100;
+    int beginOfCurrentMonth = AuxiliaryMethods::convertStringToInt(dateManager.getCurrentDate()) - dateManager.getTodaysDayOfAMonth();
+    int previousMonthBegin = AuxiliaryMethods::convertStringToInt(dateManager.getCurrentDate()) - dateManager.getTodaysDayOfAMonth() - 100;
     cout << "Przychody z poprzedniego miesiaca: " << endl;
     cout << "-------------------------------" << endl;
 
@@ -451,16 +331,16 @@ void UserManager::displaySummaryOfGivenTime()
         {
             cout << endl << "Podaj date poczatku okresu z ktorego obliczyc bilans(format rr-mm-dd): ";
             cin >> firstDate;
-        }while(checkIfDateIsCorrect(firstDate)==false);
+        }while(dateManager.checkIfDateIsCorrect(firstDate)==false);
 
       do
         {
             cout << endl << "Podaj date konca okresu z ktorego obliczyc bilans(format rr-mm-dd): ";
             cin >> secondDate;
-        }while(checkIfDateIsCorrect(secondDate)==false);
+        }while(dateManager.checkIfDateIsCorrect(secondDate)==false);
 
-      firstDateAfterConversion = convertStringDateToIntDate(firstDate);
-      secondDateAfterConversion = convertStringDateToIntDate(secondDate);
+      firstDateAfterConversion = dateManager.convertStringDateToIntDate(firstDate);
+      secondDateAfterConversion = dateManager.convertStringDateToIntDate(secondDate);
 
     cout << "Przychody z podanego okresu: " << endl;
     cout << "-------------------------------" << endl;
