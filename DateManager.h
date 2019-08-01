@@ -13,7 +13,7 @@ class DateManager
     int checkMaxNumberOfDaysInAMonth(int year,int month);
 public:
     DateManager(){
-    currentDate = getCurrentDateFromUnixTime();};
+    currentDate = getCurrentDateFromUnixTime(); };
     int convertStringDateToIntDate(string date);
     string getCurrentDateFromUnixTime();
     string getCurrentDate();

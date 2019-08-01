@@ -10,6 +10,7 @@
 #include <string>
 #include "User.h"
 #include "DateManager.h"
+#include "DisplayMoneyManager.h"
 #include "AuxiliaryMethods.h"
 #include "FileWithSavedUsers.h"
 #include "FileWithSavedExpences.h"
@@ -24,6 +25,7 @@ class UserManager
     vector <Income> incomes;
     vector <Expence> expences;
     DateManager dateManager;
+    DisplayMoneyManager displayMoneyManager;
     FileWithSavedUsers fileWithSavedUsers;
     FileWithSavedExpences fileWithSavedExpences;
     FileWithSavedIncomes fileWithSavedIncomes;
@@ -32,9 +34,6 @@ class UserManager
     User loadNewUserData();
     bool checkIfLoginAlreadyExists(string newLogin);
     string changeCommasToDots(string stringAmount);
-    string changeIntDateToDateWithDashes(int intDate);
-    void displayIncome(Income income);
-    void displayExpence(Expence expence);
 public:
     UserManager(): fileWithSavedUsers("Users.xml"), fileWithSavedExpences("Expences.xml"), fileWithSavedIncomes("Incomes.xml"){
      loggedUserId = 0;

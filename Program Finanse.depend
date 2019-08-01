@@ -23,10 +23,10 @@
 1564593945 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\xmlfile.cpp
 	"XMLFile.h"
 
-1564680121 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.cpp
+1564683134 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.cpp
 	"UserManager.h"
 
-1564679997 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.h
+1564683459 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\usermanager.h
 	<iostream>
 	<cstdio>
 	<sstream>
@@ -37,6 +37,7 @@
 	<string>
 	"User.h"
 	"DateManager.h"
+	"DisplayMoneyManager.h"
 	"AuxiliaryMethods.h"
 	"FileWithSavedUsers.h"
 	"FileWithSavedExpences.h"
@@ -117,13 +118,25 @@
 1564593945 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\auxiliarymethods.cpp
 	"AuxiliaryMethods.h"
 
-1564679997 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\datemanager.h
+1564683134 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\datemanager.h
 	<iostream>
 	"AuxiliaryMethods.h"
 	<vector>
 	<time.h>
 	<windows.h>
 
-1564679918 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\datemanager.cpp
+1564680374 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\datemanager.cpp
 	"DateManager.h"
+
+1564683459 c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\displaymoneymanager.h
+	<iostream>
+	"AuxiliaryMethods.h"
+	"DateManager.h"
+	"Income.h"
+	"Expence.h"
+	<vector>
+	<windows.h>
+
+1564683154 source:c:\users\user\desktop\programowanie\code blocks dokumenty\wyzwania\wyzwanie 14 - program finanse\program finanse\displaymoneymanager.cpp
+	"DisplayMoneyManager.h"
 
